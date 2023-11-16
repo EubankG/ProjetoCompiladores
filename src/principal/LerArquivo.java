@@ -1,3 +1,4 @@
+package principal;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class LerArquivo {
 					String[] palavra = arrayPalavra.split("");
 					
 					for(String letra : palavra) {
-						validarLetra(letra);
+						analiseLexica(letra);
 					}
 					
 					System.out.println(arrayPalavra);
@@ -32,9 +33,11 @@ public class LerArquivo {
 		buffRead.close();
 	}
 
-	private void validarLetra(String letra) {
+	private void analiseLexica(String letra) {
 		
-		
+//		System.out.println(Alfabeto.FUNCOES.toString());
+//		
+//		letra.contains(Alfabeto.FUNCOES.toString());
 		
 		
 	}
