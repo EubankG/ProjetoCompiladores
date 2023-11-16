@@ -4,7 +4,7 @@ import java.util.List;
 import enumerator.TipoToken;
 import principal.Token;
 
-public class SemanticAnalyzer {
+public class AnalisadorSemantico {
 
 	private List<Token> tokens;
 
@@ -12,7 +12,7 @@ public class SemanticAnalyzer {
 
     private Token currentToken;
     
-    public SemanticAnalyzer(List<Token> tokens) {
+    public AnalisadorSemantico(List<Token> tokens) {
 
         this.tokens = tokens;
 

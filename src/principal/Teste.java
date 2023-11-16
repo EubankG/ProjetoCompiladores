@@ -4,7 +4,7 @@ import java.util.List;
 
 import analisadores.Lexer;
 import analisadores.Parser;
-import analisadores.SemanticAnalyzer;
+import analisadores.AnalisadorSemantico;
 import enumerator.TipoToken;
 
 public class Teste {
@@ -39,7 +39,7 @@ public class Teste {
         Parser parse = new Parser(tokens);
         parse.parse();
         
-        SemanticAnalyzer semantico = new SemanticAnalyzer(tokens);
+        AnalisadorSemantico semantico = new AnalisadorSemantico(tokens);
         System.out.println(semantico.analyze());
         
         
