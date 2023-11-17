@@ -10,6 +10,11 @@ public enum TipoToken {
     FECHAR_PAREN,
     ASTERISCO,
     SOMA,
+    VARIAVEL,
+    IGUAL,
+    PONTO_VIRGULA,
+    DIVISAO,
+    SUBTRACAO,
     FIM, 
     ERRO
 	

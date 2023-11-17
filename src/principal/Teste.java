@@ -2,47 +2,36 @@ package principal;
 import java.util.ArrayList;
 import java.util.List;
 
-import analisadores.Lexer;
-import analisadores.Parser;
+import analisadores.AnalisadorLexico;
 import analisadores.AnalisadorSemantico;
+import analisadores.AnalisadorSintatico;
 import enumerator.TipoToken;
 
 public class Teste {
 	
 	public static void main(String[] args) {
 		
-//		String input = "INTEIRO x = 10; INTEIRO y = 20;";
-		String input = "INTEIRO x = (10 + 5);";
-        Lexer lexer = new Lexer(input);
-        Token token;
-        
-//        Integer inteiro = 0;
-//        Double real = 0.0d;
-
+		String input = "INTEIRO x = 2 + 2 * 2;";
+        AnalisadorLexico analisador = new AnalisadorLexico(input);
         List<Token> tokens = new ArrayList<Token>();
-        
+
+        Token token;
         do {
-            token = lexer.nextToken();
-            
-//            if(token.getTipo() == TokenType.INTEIRO && !token.getValor().isEmpty()) {
-//            	inteiro = inteiro + Integer.valueOf(token.getValor());
-//            }
-            
+            token = analisador.nextToken();
             System.out.println(token);
             
             tokens.add(token);
-            
         } while (token.getTipo() != TipoToken.FIM);
-        
-        
+		
+       
         //VALIDOU OS TOKENS
-        Parser parse = new Parser(tokens);
+        AnalisadorSintatico parse = new AnalisadorSintatico(tokens);
         parse.parse();
         
+        
+        //REALIZAR TAREFAS
         AnalisadorSemantico semantico = new AnalisadorSemantico(tokens);
-        System.out.println(semantico.analyze());
-        
-        
+        System.out.println(semantico.analizar());
     
 	}
 
