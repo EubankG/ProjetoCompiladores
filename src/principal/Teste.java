@@ -10,8 +10,7 @@ import enumerator.TipoToken;
 public class Teste {
 	
 	public static void main(String[] args) {
-		
-		String input = "INTEIRO x = 2 + 2 * 2;";
+		String input = "INTEIRO x = 2 + 2;";
         AnalisadorLexico analisador = new AnalisadorLexico(input);
         List<Token> tokens = new ArrayList<Token>();
 

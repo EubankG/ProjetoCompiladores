@@ -15,6 +15,7 @@ public enum TipoToken {
     PONTO_VIRGULA,
     DIVISAO,
     SUBTRACAO,
+    LETRA,
     FIM, 
     ERRO
 	

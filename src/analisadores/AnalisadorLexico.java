@@ -3,16 +3,21 @@ package analisadores;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.management.RuntimeErrorException;
+
 import enumerator.TipoToken;
 import principal.Token;
 
 public class AnalisadorLexico {
 
-	private static final Pattern PATTERN = Pattern.compile(
-			"\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()])");
+	//REGEX CERTA
+//	private static final Pattern PATTERN = Pattern.compile(
+//			"\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()])");
 
-	
-    private final String input;
+	private static final Pattern PATTERN = Pattern.compile(
+	        "\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()=])|(?<LETRA>[A-Z])");
+  
+	private final String input;
     private final Matcher matcher;
 
     public AnalisadorLexico(String input) {
@@ -75,6 +80,11 @@ public class AnalisadorLexico {
 
                 return new Token(TipoToken.CHAVE, "REAL");
 
+            } 
+            
+            
+            else if(matcher.group("LETRA") != null) {
+            	throw new RuntimeErrorException(null, "Caracter invalido");
             }
 
         }
