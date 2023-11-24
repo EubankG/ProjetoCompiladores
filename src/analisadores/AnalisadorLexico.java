@@ -11,12 +11,9 @@ import principal.Token;
 public class AnalisadorLexico {
 
 	//REGEX CERTA
-//	private static final Pattern PATTERN = Pattern.compile(
-//			"\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()])");
-
 	private static final Pattern PATTERN = Pattern.compile(
-	        "\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()=])|(?<LETRA>[A-Z])");
-  
+			"\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()])");
+
 	private final String input;
     private final Matcher matcher;
 
@@ -26,7 +23,9 @@ public class AnalisadorLexico {
     }
     
     public Token nextToken() {
-
+    	
+    	isLetra();
+    	
         while (matcher.find()) {
 
             if (matcher.group("INTEIRO") != null) {
@@ -72,26 +71,35 @@ public class AnalisadorLexico {
 
                 }
 
-            } else if (matcher.group("INTEIRO") != null) {
-
-                return new Token(TipoToken.CHAVE, "INTEIRO");
-
-            } else if (matcher.group("REAL") != null) {
-
-                return new Token(TipoToken.CHAVE, "REAL");
-
             } 
-            
-            
-            else if(matcher.group("LETRA") != null) {
-            	throw new RuntimeErrorException(null, "Caracter invalido");
-            }
 
         }
         
         return new Token(TipoToken.FIM, "");
         
     }
+
+	private void isLetra() {
+		int lugar = input.indexOf("=");
+
+    	String valores = input.substring(lugar);
+    	
+    	char[] c = valores.toCharArray();
+    	boolean isletra = false;
+
+    	for ( int i = 0; i < c.length; i++ ) {
+    	    // verifica se o char não é um dígito
+    	    if (Character.isLetter( c[ i ] ) ) {
+    	        isletra = true;
+    	        break;
+    	    }
+    	}
+    	
+    	if(isletra) {
+        	throw new RuntimeErrorException(null, "Caracter invalido");
+
+    	}
+	}
     
 }
 
