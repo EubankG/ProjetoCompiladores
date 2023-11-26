@@ -5,6 +5,7 @@ public enum TipoToken {
 	CHAVE,
     INTEIRO,
     REAL,
+    TIPO,
     OPERADOR, 
     ABRIR_PAREN,
     FECHAR_PAREN,
