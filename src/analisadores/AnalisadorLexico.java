@@ -11,7 +11,7 @@ import principal.Token;
 
 public class AnalisadorLexico {
 
-    //REGEX CERTA
+    //REGEX ANTIGA
     //private static final Pattern PATTERN5 = Pattern.compile(
     //        "\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()])");
 
