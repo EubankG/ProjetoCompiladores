@@ -12,7 +12,7 @@ import principal.Token;
 public class AnalisadorLexico {
 
 	 private static final Pattern PATTERN = Pattern.compile(
-	            "(?<TIPO>INTEIRO|REAL)|(?<VARIAVEL>[a-zA-Z]+[\\d]*)|(?<IGUAL>[=])|(?<INTEIRO>[^ \\.a-zA-Z+~*;=/()-]+)|(?<REAL>[^ a-zA-Z()/*+~;=-]+)|(?<OPERADOR>[=/+*()-])|(?<FIM>[;$])");
+	            "(?<TIPO>INTEIRO|REAL)|(?<VARIAVEL>[a-zA-Z]+[\\da-zA-Z]*)|(?<IGUAL>[=])|(?<INTEIRO>[^ \\.a-zA-Z+~*;=/()-]+)|(?<REAL>[^ a-zA-Z()/*+~;=-]+)|(?<OPERADOR>[=/+*()-])|(?<FIM>[;$])");
 	 
     private final String input;
     private final Matcher matcher;
