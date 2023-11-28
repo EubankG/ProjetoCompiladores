@@ -8,7 +8,7 @@ import analisadores.AnalisadorSemantico;
 import analisadores.AnalisadorSintatico;
 import enumerator.TipoToken;
 
-public class Teste {
+public class Main {
 	
 	public static void main(String[] args) {
 		
