@@ -11,10 +11,6 @@ import principal.Token;
 
 public class AnalisadorLexico {
 
-    //REGEX ANTIGA
-//    private static final Pattern PATTERN = Pattern.compile(
-//            "\\s+|(?i)INTEIRO|REAL|(?<INTEIRO>[-+]?[0-9]+)|(?<REAL>[-+]?[0-9]*\\.[0-9]+)|(?<OPERADOR>[-+*/()])");
-
 	 private static final Pattern PATTERN = Pattern.compile(
 	            "(?<TIPO>INTEIRO|REAL)|(?<VARIAVEL>[a-zA-Z]+[\\d]*)|(?<IGUAL>[=])|(?<INTEIRO>[^ \\.a-zA-Z+~*;=/()-]+)|(?<REAL>[^ a-zA-Z()/*+~;=-]+)|(?<OPERADOR>[=/+*()-])|(?<FIM>[;$])");
 	 

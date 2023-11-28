@@ -33,7 +33,7 @@ public class Main {
 
         //REALIZAR TAREFAS
         AnalisadorSemantico semantico = new AnalisadorSemantico(tokens);
-        System.out.println(semantico.analizar());
+        System.out.println(semantico.verificar());
 	}
 
 	private static String lerArquivo() {
@@ -42,7 +42,7 @@ public class Main {
 		
 		String input = "";
 		try {
-			input = arquivo.leitorDeArquivo(path);
+			input = arquivo.leitorArquivo(path);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
