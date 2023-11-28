@@ -21,7 +21,7 @@ public class AnalisadorSemantico {
 
     }
 
-    public double analizar() {
+    public double verificar() {
 
         return converterExpressao();
 

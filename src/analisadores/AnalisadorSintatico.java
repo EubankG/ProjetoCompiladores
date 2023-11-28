@@ -24,8 +24,6 @@ public class AnalisadorSintatico {
     
     public void parse() {
 
-        // Lê o token de início e a expressão principal
-
         proximoToken();
 
         expressao();
@@ -37,12 +35,12 @@ public class AnalisadorSintatico {
 
         verificar();
 
-        ExpressionPrime();
+        verificarExpressao();
 
     }
 
 
-    private void ExpressionPrime() {
+    private void verificarExpressao() {
 
         if (tokenAtual(TipoToken.SOMA)) {
 
@@ -50,7 +48,7 @@ public class AnalisadorSintatico {
 
             verificar();
 
-            ExpressionPrime();
+            verificarExpressao();
 
         }
 
@@ -68,11 +66,11 @@ public class AnalisadorSintatico {
 
         proximoToken();
 
-        TermPrime();
+        verificarParen();
 
     }
     
-    private void TermPrime() {
+    private void verificarParen() {
 
         if (tokenAtual(TipoToken.ASTERISCO)) {
 
@@ -88,7 +86,7 @@ public class AnalisadorSintatico {
 
             proximoToken();
 
-            TermPrime();
+            verificarParen();
 
         }
 
