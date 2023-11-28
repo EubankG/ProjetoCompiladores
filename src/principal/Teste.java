@@ -1,4 +1,5 @@
 package principal;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,39 +11,42 @@ import enumerator.TipoToken;
 public class Teste {
 	
 	public static void main(String[] args) {
-		String input = "INTEIRO teste = 2 + 22 * 2 + 2 - 1 ;";
-        List<Token> tokens = new ArrayList<Token>();
+		
+		String input = lerArquivo();
+		
+		AnalisadorLexico analisador = new AnalisadorLexico(input);
+		List<Token> tokens = new ArrayList<Token>();
 
-        Token token = null;
+        Token token;
+        
         do {
-            String[] palavras = input.split(" ");
-            for(String palavra : palavras){
-
-                AnalisadorLexico analisador = new AnalisadorLexico(palavra);
-
-                token = analisador.nextToken();
-                System.out.println(token);
-
-                tokens.add(token);
-            }
+            token = analisador.nextToken();
+            System.out.println(token);
+            
+            tokens.add(token);
         } while (token.getTipo() != TipoToken.FIM);
 		
        
         //VALIDOU OS TOKENS
-        try {
-            AnalisadorSintatico parse = new AnalisadorSintatico(tokens);
-            parse.parse();
-        }catch (Exception e){
+        AnalisadorSintatico parse = new AnalisadorSintatico(tokens);
+        parse.parse();
 
-        }
-        
         //REALIZAR TAREFAS
-        try {
-            AnalisadorSemantico semantico = new AnalisadorSemantico(tokens);
-            System.out.println(semantico.analizar());
-        }catch (Exception e){
+        AnalisadorSemantico semantico = new AnalisadorSemantico(tokens);
+        System.out.println(semantico.analizar());
+	}
 
-        }
+	private static String lerArquivo() {
+		LerArquivo arquivo = new LerArquivo();
+		String path = "/Users/menoci/dev/teste.txt";
+		
+		String input = "";
+		try {
+			input = arquivo.leitorDeArquivo(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return input;
 	}
 
 }

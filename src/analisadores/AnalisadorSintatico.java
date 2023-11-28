@@ -26,7 +26,7 @@ public class AnalisadorSintatico {
 
         // Lê o token de início e a expressão principal
 
-        getNextToken();
+        proximoToken();
 
         expressao();
 
@@ -35,7 +35,7 @@ public class AnalisadorSintatico {
 
     private void expressao() {
 
-        Term();
+        verificar();
 
         ExpressionPrime();
 
@@ -44,11 +44,11 @@ public class AnalisadorSintatico {
 
     private void ExpressionPrime() {
 
-        if (isCurrentTokenType(TipoToken.SOMA)) {
+        if (tokenAtual(TipoToken.SOMA)) {
 
-            getNextToken();
+            proximoToken();
 
-            Term();
+            verificar();
 
             ExpressionPrime();
 
@@ -56,7 +56,7 @@ public class AnalisadorSintatico {
 
     }
 
-    private void Term() {
+    private void verificar() {
 
         String variableName = (String) getCurrentToken().getValor();
 
@@ -66,7 +66,7 @@ public class AnalisadorSintatico {
 
         }
 
-        getNextToken();
+        proximoToken();
 
         TermPrime();
 
@@ -74,9 +74,9 @@ public class AnalisadorSintatico {
     
     private void TermPrime() {
 
-        if (isCurrentTokenType(TipoToken.ASTERISCO)) {
+        if (tokenAtual(TipoToken.ASTERISCO)) {
 
-            getNextToken();
+            proximoToken();
 
             String variableName = (String) getCurrentToken().getValor();
 
@@ -86,7 +86,7 @@ public class AnalisadorSintatico {
 
             }
 
-            getNextToken();
+            proximoToken();
 
             TermPrime();
 
@@ -94,7 +94,7 @@ public class AnalisadorSintatico {
 
     }
 
-    private boolean isCurrentTokenType(TipoToken type) {
+    private boolean tokenAtual(TipoToken type) {
 
         return getCurrentToken() != null && getCurrentToken().getTipo() == type;
 
@@ -114,7 +114,7 @@ public class AnalisadorSintatico {
     }
 
 
-    private Token getNextToken() {
+    private Token proximoToken() {
 
         if (currentTokenIndex >= tokens.size()) {
 
