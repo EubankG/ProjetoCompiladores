@@ -38,6 +38,7 @@ public class Main {
 
 	private static String lerArquivo() {
 		LerArquivo arquivo = new LerArquivo();
+		//INSIRA O CAMINHO DO TXT COTENDO O CODIGO JAV0
 		String path = "/Users/menoci/dev/teste.txt";
 		
 		String input = "";
